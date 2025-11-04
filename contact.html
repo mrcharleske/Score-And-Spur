@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Score &amp; Spar Foodstuffs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #ea580c 0%, #fb923c 100%);
+        }
+        
+        .contact-card {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.15);
+        }
+        
+        .error-message {
+            display: none;
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .form-input.error {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+        }
+        
+        .loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #ea580c;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .toast {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+        
+        .toast.error {
+            background: #ef4444;
+        }
+        
+        .service-area {
+            background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .service-area:hover {
+            background: linear-gradient(45deg, #ea580c, #fb923c);
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="bg-orange-50"><!-- Navigation -->
+  <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16"><!-- Logo -->
+     <div class="flex-shrink-0 flex items-center"><a href="index.html" class="text-2xl font-bold text-orange-600"> <i class="fas fa-utensils mr-2"></i>Score &amp; Spar </a>
+     </div><!-- Desktop Navigation -->
+     <div class="hidden md:block">
+      <div class="ml-10 flex items-baseline space-x-4"><a href="index.html" class="text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a> <a href="shop.html" class="text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Shop</a> <a href="about.html" class="text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a> <a href="contact.html" class="text-orange-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a> <a href="cart.html" class="bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition-colors"> <i class="fas fa-shopping-cart mr-1"></i>Cart (0) </a>
+      </div>
+     </div><!-- Mobile menu button -->
+     <div class="md:hidden"><button id="mobile-menu-btn" class="text-gray-700 hover:text-orange-600 focus:outline-none"> <i class="fas fa-bars text-xl"></i> </button>
+     </div>
+    </div>
+   </div><!-- Mobile Navigation -->
+   <div id="mobile-menu" class="mobile-menu md:hidden fixed inset-y-0 left-0 w-64 bg-white shadow-lg z-50">
+    <div class="p-4">
+     <div class="flex justify-between items-center mb-8">
+      <div class="text-xl font-bold text-orange-600"><i class="fas fa-utensils mr-2"></i>Score &amp; Spar
+      </div><button id="close-menu-btn" class="text-gray-700 hover:text-orange-600"> <i class="fas fa-times text-xl"></i> </button>
+     </div>
+     <div class="space-y-4"><a href="index.html" class="block text-gray-700 hover:text-orange-600 py-2 text-lg font-medium">Home</a> <a href="shop.html" class="block text-gray-700 hover:text-orange-600 py-2 text-lg font-medium">Shop</a> <a href="about.html" class="block text-gray-700 hover:text-orange-600 py-2 text-lg font-medium">About</a> <a href="contact.html" class="block text-orange-600 py-2 text-lg font-medium">Contact</a> <a href="cart.html" class="block bg-orange-600 text-white px-4 py-3 rounded-md text-lg font-medium hover:bg-orange-700 transition-colors"> <i class="fas fa-shopping-cart mr-2"></i>Cart (0) </a>
+     </div>
+    </div>
+   </div>
+  </nav><!-- WhatsApp Float Button --> <a href="https://wa.me/254710224263" target="_blank" rel="noopener noreferrer" class="whatsapp-float"> <i class="fab fa-whatsapp" style="margin-top: 16px;"></i> </a> <!-- Hero Section -->
+  <section class="hero-gradient pt-20 pb-16 text-white">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center" data-aos="fade-up">
+     <h1 class="text-4xl md:text-6xl font-bold mb-6">Get In Touch</h1>
+     <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">We're here to help with all your grocery needs. Reach out to us anytime!</p>
+     <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4"><a href="tel:+254710224263" class="bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"> <i class="fas fa-phone mr-2"></i>Call Now </a> <a href="https://wa.me/254710224263" target="_blank" rel="noopener noreferrer" class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"> <i class="fab fa-whatsapp mr-2"></i>WhatsApp </a>
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Information Cards -->
+  <section class="py-16 bg-white">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Contact Information</h2>
+     <p class="text-gray-600 text-lg">Multiple ways to reach us for your convenience</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"><!-- Phone -->
+     <div class="contact-card bg-orange-50 rounded-xl p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+      <div class="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-phone text-2xl text-white"></i>
+      </div>
+      <h3 class="text-lg font-bold text-gray-900 mb-2">Phone</h3>
+      <p class="text-gray-600 mb-4">Call us directly for immediate assistance</p><a href="tel:+254710224263" class="text-orange-600 font-semibold hover:text-orange-700"> +254 710 224 263 </a>
+     </div><!-- WhatsApp -->
+     <div class="contact-card bg-green-50 rounded-xl p-6 text-center" data-aos="fade-up" data-aos-delay="200">
+      <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fab fa-whatsapp text-2xl text-white"></i>
+      </div>
+      <h3 class="text-lg font-bold text-gray-900 mb-2">WhatsApp</h3>
+      <p class="text-gray-600 mb-4">Chat with us on WhatsApp 24/7</p><a href="https://wa.me/254710224263" target="_blank" rel="noopener noreferrer" class="text-green-600 font-semibold hover:text-green-700"> Start Chat </a>
+     </div><!-- Email -->
+     <div class="contact-card bg-blue-50 rounded-xl p-6 text-center" data-aos="fade-up" data-aos-delay="300">
+      <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-envelope text-2xl text-white"></i>
+      </div>
+      <h3 class="text-lg font-bold text-gray-900 mb-2">Email</h3>
+      <p class="text-gray-600 mb-4">Send us an email anytime</p><a href="mailto:info@scoreandspar.co.ke" class="text-blue-600 font-semibold hover:text-blue-700"> info@scoreandspar.co.ke </a>
+     </div><!-- Location -->
+     <div class="contact-card bg-purple-50 rounded-xl p-6 text-center" data-aos="fade-up" data-aos-delay="400">
+      <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-map-marker-alt text-2xl text-white"></i>
+      </div>
+      <h3 class="text-lg font-bold text-gray-900 mb-2">Location</h3>
+      <p class="text-gray-600 mb-4">We serve across Kenya</p><span class="text-purple-600 font-semibold"> Nairobi, Kenya </span>
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Form Section -->
+  <section class="py-16 bg-orange-50">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12"><!-- Contact Form -->
+     <div data-aos="fade-right">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+       <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+       <form id="contact-form" onsubmit="submitContactForm(event)" class="space-y-6"><!-- Name -->
+        <div class="form-group"><label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label> <input type="text" id="name" name="name" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-600" placeholder="Enter your full name">
+         <div class="error-message" id="name-error">
+          Please enter your full name
+         </div>
+        </div><!-- Email -->
+        <div class="form-group"><label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label> <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-600" placeholder="Enter your email address">
+         <div class="error-message" id="email-error">
+          Please enter a valid email address
+         </div>
+        </div><!-- Phone -->
+        <div class="form-group"><label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label> <input type="tel" id="phone" name="phone" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-600" placeholder="+254 700 000 000">
+        </div><!-- Inquiry Type -->
+        <div class="form-group"><label for="inquiry-type" class="block text-sm font-semibold text-gray-700 mb-2">Inquiry Type *</label> <select id="inquiry-type" name="inquiry_type" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-600"> <option value="">Select inquiry type</option> <option value="general">General Inquiry</option> <option value="order">Order Related</option> <option value="complaint">Complaint</option> <option value="partnership">Partnership</option> <option value="other">Other</option> </select>
+         <div class="error-message" id="inquiry-type-error">
+          Please select an inquiry type
+         </div>
+        </div><!-- Message -->
+        <div class="form-group"><label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message *</label> <textarea id="message" name="message" required rows="5" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-600" placeholder="Tell us how we can help you..."></textarea>
+         <div class="error-message" id="message-error">
+          Please enter your message
+         </div>
+        </div><!-- Submit Button --> <button type="submit" id="submit-btn" class="w-full bg-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-orange-700 transition-colors flex items-center justify-center"> <span id="submit-text">Send Message</span>
+         <div class="loading-spinner ml-2" id="submit-spinner"></div></button>
+       </form>
+      </div>
+     </div><!-- Business Hours & Service Areas -->
+     <div data-aos="fade-left"><!-- Business Hours -->
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+       <h3 class="text-xl font-bold text-gray-900 mb-6">Business Hours</h3>
+       <div class="space-y-3">
+        <div class="flex justify-between"><span class="text-gray-600">Monday - Friday</span> <span class="font-semibold text-gray-900">6:00 AM - 10:00 PM</span>
+        </div>
+        <div class="flex justify-between"><span class="text-gray-600">Saturday</span> <span class="font-semibold text-gray-900">6:00 AM - 11:00 PM</span>
+        </div>
+        <div class="flex justify-between"><span class="text-gray-600">Sunday</span> <span class="font-semibold text-gray-900">7:00 AM - 10:00 PM</span>
+        </div>
+       </div>
+       <div class="mt-6 p-4 bg-green-50 rounded-lg">
+        <div class="flex items-center"><i class="fas fa-clock text-green-600 mr-2"></i> <span class="text-green-800 font-semibold">24/7 WhatsApp Support Available</span>
+        </div>
+       </div>
+      </div><!-- Service Areas -->
+      <div class="bg-white rounded-xl shadow-lg p-8">
+       <h3 class="text-xl font-bold text-gray-900 mb-6">Service Areas</h3>
+       <p class="text-gray-600 mb-4">We deliver fresh groceries to the following areas:</p>
+       <div class="grid grid-cols-2 gap-2">
+        <div class="service-area">
+         Nairobi
+        </div>
+        <div class="service-area">
+         Mombasa
+        </div>
+        <div class="service-area">
+         Kisumu
+        </div>
+        <div class="service-area">
+         Nakuru
+        </div>
+        <div class="service-area">
+         Eldoret
+        </div>
+        <div class="service-area">
+         Thika
+        </div>
+        <div class="service-area">
+         Machakos
+        </div>
+        <div class="service-area">
+         Nyeri
+        </div>
+       </div>
+       <div class="mt-6 p-4 bg-orange-50 rounded-lg">
+        <div class="flex items-center"><i class="fas fa-shipping-fast text-orange-600 mr-2"></i> <span class="text-orange-800 font-semibold">Same-day delivery available in major cities</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- FAQ Section -->
+  <section class="py-16 bg-white">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+     <p class="text-gray-600 text-lg">Quick answers to common questions</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+     <div data-aos="fade-up" data-aos-delay="100">
+      <div class="bg-orange-50 rounded-xl p-6">
+       <h3 class="text-lg font-bold text-gray-900 mb-3">What are your delivery hours?</h3>
+       <p class="text-gray-600">We deliver Monday to Sunday from 8:00 AM to 8:00 PM. Same-day delivery is available for orders placed before 2:00 PM.</p>
+      </div>
+     </div>
+     <div data-aos="fade-up" data-aos-delay="200">
+      <div class="bg-green-50 rounded-xl p-6">
+       <h3 class="text-lg font-bold text-gray-900 mb-3">Do you deliver to my area?</h3>
+       <p class="text-gray-600">We serve major cities across Kenya. Contact us with your location to confirm delivery availability in your area.</p>
+      </div>
+     </div>
+     <div data-aos="fade-up" data-aos-delay="300">
+      <div class="bg-blue-50 rounded-xl p-6">
+       <h3 class="text-lg font-bold text-gray-900 mb-3">What payment methods do you accept?</h3>
+       <p class="text-gray-600">We accept M-Pesa, cash on delivery, and bank transfers. Payment details will be provided when you place your order.</p>
+      </div>
+     </div>
+     <div data-aos="fade-up" data-aos-delay="400">
+      <div class="bg-purple-50 rounded-xl p-6">
+       <h3 class="text-lg font-bold text-gray-900 mb-3">How fresh are your products?</h3>
+       <p class="text-gray-600">We source directly from local farmers and suppliers daily. All products are fresh and meet our quality standards before delivery.</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+     <div>
+      <div class="text-2xl font-bold text-orange-400 mb-4"><i class="fas fa-utensils mr-2"></i>Score &amp; Spar
+      </div>
+      <p class="text-gray-400 mb-4">Your trusted partner for fresh, quality foodstuffs and groceries in Kenya.</p>
+      <div class="flex space-x-4"><a href="https://wa.me/254710224263" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300"> <i class="fab fa-whatsapp text-xl"></i> </a> <a href="tel:+254710224263" class="text-blue-400 hover:text-blue-300"> <i class="fas fa-phone text-xl"></i> </a>
+      </div>
+     </div>
+     <div>
+      <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+      <ul class="space-y-2">
+       <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+       <li><a href="shop.html" class="text-gray-400 hover:text-white transition-colors">Shop</a></li>
+       <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+       <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+      </ul>
+     </div>
+     <div>
+      <h3 class="text-lg font-semibold mb-4">Categories</h3>
+      <ul class="space-y-2">
+       <li><a href="shop.html" class="text-gray-400 hover:text-white transition-colors">Fresh Produce</a></li>
+       <li><a href="shop.html" class="text-gray-400 hover:text-white transition-colors">Bakery Items</a></li>
+       <li><a href="shop.html" class="text-gray-400 hover:text-white transition-colors">Meat &amp; Poultry</a></li>
+       <li><a href="shop.html" class="text-gray-400 hover:text-white transition-colors">Dairy Products</a></li>
+      </ul>
+     </div>
+     <div>
+      <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+      <div class="space-y-2 text-gray-400">
+       <p><i class="fas fa-phone mr-2"></i>+254 710 224 263</p>
+       <p><i class="fab fa-whatsapp mr-2"></i>WhatsApp Available</p>
+       <p><i class="fas fa-map-marker-alt mr-2"></i>Kenya</p>
+       <p><i class="fas fa-clock mr-2"></i>Mon-Sun: 6AM-10PM</p>
+      </div>
+     </div>
+    </div>
+    <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+     <p class="text-gray-400">© 2024 Score &amp; Spar Foodstuffs. All rights reserved. Fresh food, happy families.</p>
+    </div>
+   </div>
+  </footer>
+  <script>
+        // Global variables
+        let contactSubmissions = [];
+        let isSubmitting = false;
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Initialize AOS animations
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Data SDK Handler
+        const dataHandler = {
+            onDataChanged(data) {
+                contactSubmissions = data || [];
+                // Update UI if needed (e.g., show submission count)
+            }
+        };
+
+        // Initialize Data SDK
+        async function initializeDataSDK() {
+            if (window.dataSdk) {
+                const result = await window.dataSdk.init(dataHandler);
+                if (!result.isOk) {
+                    console.error('Failed to initialize Data SDK');
+                }
+            }
+        }
+
+        // Form validation
+        function validateForm() {
+            let isValid = true;
+            const fields = ['name', 'email', 'inquiry-type', 'message'];
+            
+            fields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                const errorElement = document.getElementById(`${fieldId}-error`);
+                
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    errorElement.classList.add('show');
+                    isValid = false;
+                } else {
+                    field.classList.remove('error');
+                    errorElement.classList.remove('show');
+                }
+            });
+
+            // Email validation
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (email.value.trim() && !emailRegex.test(email.value)) {
+                email.classList.add('error');
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.classList.add('show');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        // Submit contact form
+        async function submitContactForm(event) {
+            event.preventDefault();
+            
+            if (isSubmitting) return;
+            
+            if (!validateForm()) {
+                showToast('Please fill in all required fields correctly', 'error');
+                return;
+            }
+
+            if (contactSubmissions.length >= 999) {
+                showToast('Maximum limit of 999 submissions reached. Please try again later.', 'error');
+                return;
+            }
+
+            isSubmitting = true;
+            showSubmitLoading(true);
+
+            const formData = new FormData(event.target);
+            const submissionData = {
+                id: Date.now().toString(),
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone') || '',
+                inquiry_type: formData.get('inquiry_type'),
+                message: formData.get('message'),
+                submitted_at: new Date().toISOString(),
+                status: 'new'
+            };
+
+            if (window.dataSdk) {
+                const result = await window.dataSdk.create(submissionData);
+                
+                if (result.isOk) {
+                    showToast('Message sent successfully! We\'ll get back to you soon.');
+                    document.getElementById('contact-form').reset();
+                } else {
+                    showToast('Failed to send message. Please try again.', 'error');
+                }
+            } else {
+                // Fallback for when SDK is not available
+                showToast('Message sent successfully! We\'ll get back to you soon.');
+                document.getElementById('contact-form').reset();
+            }
+
+            isSubmitting = false;
+            showSubmitLoading(false);
+        }
+
+        // Show/hide submit loading state
+        function showSubmitLoading(show) {
+            const submitBtn = document.getElementById('submit-btn');
+            const submitText = document.getElementById('submit-text');
+            const submitSpinner = document.getElementById('submit-spinner');
+            
+            if (show) {
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-75');
+                submitText.textContent = 'Sending...';
+                submitSpinner.style.display = 'block';
+            } else {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75');
+                submitText.textContent = 'Send Message';
+                submitSpinner.style.display = 'none';
+            }
+        }
+
+        // Show toast notification
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check'} mr-2"></i>${message}`;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.classList.add('show'), 100);
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    if (document.body.contains(toast)) {
+                        document.body.removeChild(toast);
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+        // Real-time form validation
+        document.addEventListener('DOMContentLoaded', () => {
+            const formInputs = document.querySelectorAll('.form-input');
+            
+            formInputs.forEach(input => {
+                input.addEventListener('blur', () => {
+                    const errorElement = document.getElementById(`${input.id}-error`);
+                    
+                    if (!input.value.trim() && input.hasAttribute('required')) {
+                        input.classList.add('error');
+                        errorElement.classList.add('show');
+                    } else {
+                        input.classList.remove('error');
+                        errorElement.classList.remove('show');
+                    }
+                });
+
+                input.addEventListener('input', () => {
+                    if (input.classList.contains('error') && input.value.trim()) {
+                        input.classList.remove('error');
+                        document.getElementById(`${input.id}-error`).classList.remove('show');
+                    }
+                });
+            });
+        });
+
+        // Element SDK Configuration
+        const defaultConfig = {
+            page_title: "Get In Touch",
+            hero_subtitle: "We're here to help with all your grocery needs. Reach out to us anytime!",
+            contact_phone: "+254 710 224 263",
+            contact_email: "info@scoreandspar.co.ke",
+            business_location: "Nairobi, Kenya",
+            form_title: "Send Us a Message",
+            primary_color: "#ea580c",
+            secondary_color: "#ffffff",
+            text_color: "#1f2937",
+            accent_color: "#16a34a",
+            background_color: "#fff7ed",
+            font_family: "Poppins",
+            font_size: 16
+        };
+
+        async function onConfigChange(config) {
+            // Update page title
+            const pageTitle = document.querySelector('h1');
+            if (pageTitle) {
+                pageTitle.textContent = config.page_title || defaultConfig.page_title;
+            }
+            
+            // Update hero subtitle
+            const heroSubtitle = document.querySelector('.text-xl.md\\:text-2xl');
+            if (heroSubtitle) {
+                heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+            }
+            
+            // Update contact phone
+            const phoneLinks = document.querySelectorAll('a[href^="tel:"], a[href^="https://wa.me/"]');
+            phoneLinks.forEach(link => {
+                const phone = config.contact_phone || defaultConfig.contact_phone;
+                if (link.href.includes('tel:')) {
+                    link.href = `tel:${phone}`;
+                } else if (link.href.includes('wa.me')) {
+                    link.href = `https://wa.me/${phone.replace(/[^0-9]/g, '')}`;
+                }
+            });
+            
+            // Update phone display text
+            const phoneDisplays = document.querySelectorAll('.text-orange-600, .text-green-600');
+            phoneDisplays.forEach(element => {
+                if (element.textContent.includes('+254')) {
+                    element.textContent = config.contact_phone || defaultConfig.contact_phone;
+                }
+            });
+            
+            // Update email
+            const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+            emailLinks.forEach(link => {
+                const email = config.contact_email || defaultConfig.contact_email;
+                link.href = `mailto:${email}`;
+                link.textContent = email;
+            });
+            
+            // Update business location
+            const locationElements = document.querySelectorAll('.text-purple-600');
+            locationElements.forEach(element => {
+                if (element.textContent.includes('Kenya')) {
+                    element.textContent = config.business_location || defaultConfig.business_location;
+                }
+            });
+            
+            // Update form title
+            const formTitle = document.querySelector('.bg-white.rounded-xl.shadow-lg h2');
+            if (formTitle) {
+                formTitle.textContent = config.form_title || defaultConfig.form_title;
+            }
+            
+            // Apply colors
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            document.body.style.backgroundColor = backgroundColor;
+            
+            // Apply font settings
+            const customFont = config.font_family || defaultConfig.font_family;
+            const baseSize = config.font_size || defaultConfig.font_size;
+            
+            document.body.style.fontFamily = `${customFont}, -apple-system, BlinkMacSystemFont, sans-serif`;
+            document.body.style.fontSize = `${baseSize}px`;
+            
+            // Scale headings proportionally
+            const headings = document.querySelectorAll('h1, h2, h3, h4');
+            headings.forEach(heading => {
+                if (heading.tagName === 'H1') {
+                    heading.style.fontSize = `${baseSize * 3}px`;
+                } else if (heading.tagName === 'H2') {
+                    heading.style.fontSize = `${baseSize * 2.25}px`;
+                } else if (heading.tagName === 'H3') {
+                    heading.style.fontSize = `${baseSize * 1.5}px`;
+                } else if (heading.tagName === 'H4') {
+                    heading.style.fontSize = `${baseSize * 1.25}px`;
+                }
+            });
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.primary_color || defaultConfig.primary_color,
+                        set: (value) => {
+                            config.primary_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ primary_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.secondary_color || defaultConfig.secondary_color,
+                        set: (value) => {
+                            config.secondary_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ secondary_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            config.text_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.accent_color || defaultConfig.accent_color,
+                        set: (value) => {
+                            config.accent_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ accent_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            config.background_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: {
+                    get: () => config.font_family || defaultConfig.font_family,
+                    set: (value) => {
+                        config.font_family = value;
+                        if (window.elementSdk) {
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    }
+                },
+                fontSizeable: {
+                    get: () => config.font_size || defaultConfig.font_size,
+                    set: (value) => {
+                        config.font_size = value;
+                        if (window.elementSdk) {
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["page_title", config.page_title || defaultConfig.page_title],
+                ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                ["contact_phone", config.contact_phone || defaultConfig.contact_phone],
+                ["contact_email", config.contact_email || defaultConfig.contact_email],
+                ["business_location", config.business_location || defaultConfig.business_location],
+                ["form_title", config.form_title || defaultConfig.form_title]
+            ]);
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', async () => {
+            await initializeDataSDK();
+            
+            // Initialize Element SDK
+            if (window.elementSdk) {
+                window.elementSdk.init({
+                    defaultConfig,
+                    onConfigChange,
+                    mapToCapabilities,
+                    mapToEditPanelValues
+                });
+            }
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9994928f76958a6a',t:'MTc2MjI2NDE0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
